@@ -16,7 +16,6 @@ export interface MercadoPagoPreference {
     failure?: string;
     pending?: string;
   };
-  auto_return?: string;
 }
 
 export interface MercadoPagoPreferenceResponse {

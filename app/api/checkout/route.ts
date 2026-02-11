@@ -20,7 +20,7 @@ export async function POST(request: Request) {
           title: 'Etiqueta personalizada',
           quantity: 1,
           currency_id: 'BRL',
-          unit_price: 19.9
+          unit_price: 9.9
         }
       ],
       payer: {
@@ -32,8 +32,7 @@ export async function POST(request: Request) {
         success: `${baseUrl}/sucesso?order=${order.id}`,
         failure: `${baseUrl}/erro?order=${order.id}`,
         pending: `${baseUrl}/pendente?order=${order.id}`
-      },
-      auto_return: 'approved'
+      }
     });
 
     return NextResponse.json({ init_point: preference.init_point });

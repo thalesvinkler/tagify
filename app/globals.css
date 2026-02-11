@@ -3,5 +3,22 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+.font-label {
+  font-family: var(--font-label), sans-serif;
+}
+
+select option {
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+select option:disabled {
+  color: #94a3b8;
 }
