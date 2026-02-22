@@ -6,16 +6,13 @@ export async function GET(_request: Request, context: { params: { orderId: strin
   try {
     const { orderId } = context.params;
     const download = await getDownload(orderId);
-    const expiresAt = new Date(download.expires_at);
-
-    if (Number.isNaN(expiresAt.getTime()) || expiresAt.getTime() < Date.now()) {
-      return NextResponse.json({ error: 'Link expirado.' }, { status: 410 });
-    }
 
     const signedUrl = await createSignedUrl(download.file_path, 60 * 60);
     await incrementDownloadCount(orderId);
 
-    return NextResponse.redirect(signedUrl);
+    const response = NextResponse.redirect(signedUrl, 302);
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+    return response;
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Erro ao baixar.';
     return NextResponse.json({ error: message }, { status: 500 });

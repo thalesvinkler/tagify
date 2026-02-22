@@ -56,13 +56,12 @@ export async function markOrderApproved(orderId: string, paymentId: string) {
   }
 }
 
-export async function saveDownload(orderId: string, filePath: string, expiresAt: string) {
+export async function saveDownload(orderId: string, filePath: string) {
   const { error } = await supabase
     .from('downloads')
     .insert({
       order_id: orderId,
       file_path: filePath,
-      expires_at: expiresAt,
       download_count: 0
     });
 
@@ -74,7 +73,7 @@ export async function saveDownload(orderId: string, filePath: string, expiresAt:
 export async function getDownload(orderId: string) {
   const { data, error } = await supabase
     .from('downloads')
-    .select('file_path, expires_at, download_count')
+    .select('file_path, download_count')
     .eq('order_id', orderId)
     .single();
 
@@ -82,7 +81,7 @@ export async function getDownload(orderId: string) {
     throw new Error(`Erro ao buscar download: ${error.message}`);
   }
 
-  return data as { file_path: string; expires_at: string; download_count: number };
+  return data as { file_path: string; download_count: number };
 }
 
 export async function incrementDownloadCount(orderId: string) {
