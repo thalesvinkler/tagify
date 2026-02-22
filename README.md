@@ -1,4 +1,4 @@
-# Tagify MVP
+# Tagify
 
 Starter para um gerador de etiquetas com pagamento via Mercado Pago, geração de PNG/PDF no servidor e entrega automática via Supabase Storage.
 
@@ -31,7 +31,7 @@ npm install
 npm run dev
 ```
 
-## Fluxo do MVP
+## Fluxo do App
 
 1. Usuário preenche o formulário na landing page.
 2. `/api/checkout` cria o pedido no Supabase e a preferência no Mercado Pago.

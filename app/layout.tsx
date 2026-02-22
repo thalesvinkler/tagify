@@ -21,7 +21,7 @@ const oxanium = Oxanium({
 });
 
 export const metadata = {
-  title: 'Tagify MVP',
+  title: 'Tagify - Gerador de Etiquetas',
   description: 'Gerador de etiquetas com checkout e entrega automática.'
 };
 
