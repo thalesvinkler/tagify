@@ -50,6 +50,7 @@ export async function createPreference(preference: MercadoPagoPreference) {
 export async function fetchPayment(paymentId: string) {
   if (!mercadoPagoToken) {
     throw new Error('MERCADOPAGO_ACCESS_TOKEN não configurado.');
+    console.error('MERCADOPAGO_ACCESS_TOKEN não configurado. Verifique as variáveis de ambiente.');
   }
 
   const response = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
