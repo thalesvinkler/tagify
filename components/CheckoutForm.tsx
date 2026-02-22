@@ -3,14 +3,85 @@
 import { useState } from 'react';
 
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
-const countries = ['Brasil', 'Portugal', 'Estados Unidos', 'Argentina', 'Chile'];
-const countryFlags: Record<string, string> = {
-  Brasil: '/flags/br.svg',
-  Portugal: '/flags/pt.svg',
-  'Estados Unidos': '/flags/us.svg',
-  Argentina: '/flags/ar.svg',
-  Chile: '/flags/cl.svg'
+const countries = [
+  'Antigua e Barbuda',
+  'Argentina',
+  'Bahamas',
+  'Barbados',
+  'Belize',
+  'Bolivia',
+  'Brasil',
+  'Canada',
+  'Chile',
+  'Colombia',
+  'Costa Rica',
+  'Cuba',
+  'Dominica',
+  'Equador',
+  'El Salvador',
+  'Estados Unidos',
+  'Granada',
+  'Guatemala',
+  'Guiana',
+  'Haiti',
+  'Honduras',
+  'Jamaica',
+  'Mexico',
+  'Nicaragua',
+  'Panama',
+  'Paraguai',
+  'Peru',
+  'Republica Dominicana',
+  'Sao Cristovao e Nevis',
+  'Santa Lucia',
+  'Sao Vicente e Granadinas',
+  'Suriname',
+  'Trinidad e Tobago',
+  'Uruguai',
+  'Venezuela'
+];
+const countryFlagCodes: Record<string, string> = {
+  'Antigua e Barbuda': 'ag',
+  Argentina: 'ar',
+  Bahamas: 'bs',
+  Barbados: 'bb',
+  Belize: 'bz',
+  Bolivia: 'bo',
+  Brasil: 'br',
+  Canada: 'ca',
+  Chile: 'cl',
+  Colombia: 'co',
+  'Costa Rica': 'cr',
+  Cuba: 'cu',
+  Dominica: 'dm',
+  Equador: 'ec',
+  'El Salvador': 'sv',
+  'Estados Unidos': 'us',
+  Granada: 'gd',
+  Guatemala: 'gt',
+  Guiana: 'gy',
+  Haiti: 'ht',
+  Honduras: 'hn',
+  Jamaica: 'jm',
+  Mexico: 'mx',
+  Nicaragua: 'ni',
+  Panama: 'pa',
+  Paraguai: 'py',
+  Peru: 'pe',
+  'Republica Dominicana': 'do',
+  'Sao Cristovao e Nevis': 'kn',
+  'Santa Lucia': 'lc',
+  'Sao Vicente e Granadinas': 'vc',
+  Suriname: 'sr',
+  'Trinidad e Tobago': 'tt',
+  Uruguai: 'uy',
+  Venezuela: 've'
 };
+
+function getCountryFlag(country: string) {
+  const code = countryFlagCodes[country] ?? 'br';
+  return `https://flagcdn.com/${code}.svg`;
+}
 
 export default function CheckoutForm() {
   const [loading, setLoading] = useState(false);
@@ -79,7 +150,7 @@ export default function CheckoutForm() {
             name="name"
             required
             className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-slate-100 placeholder:text-slate-400 outline-none transition focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/20"
-            placeholder="Thales"
+            placeholder="Seu nome aqui"
             onChange={(event) => setPreviewName(event.target.value)}
           />
         </div>
@@ -138,11 +209,11 @@ export default function CheckoutForm() {
             className="w-full bg-transparent drop-shadow-[0_18px_45px_rgba(0,0,0,0.5)]"
           />
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute left-[9.4%] top-[18%] w-[23.2%]">
+            <div className="absolute left-[9.5%] top-[18%] h-[58%] w-[20.1%] origin-left skew-x-[-29deg] overflow-hidden rounded-[4px] shadow-[0_6px_18px_rgba(0,0,0,0.45)]">
               <img
-                src={countryFlags[previewCountry] ?? countryFlags.Brasil}
+                src={getCountryFlag(previewCountry)}
                 alt={`Bandeira ${previewCountry}`}
-                className="w-auto origin-left scale-x-[0.87] rounded-[8px] skew-x-[-29deg] shadow-[0_6px_18px_rgba(0,0,0,0.45)]"
+                className="h-full w-full object-cover"
               />
             </div>
             <div
