@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tagify - Gerador de Etiquetas de Atletas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>Tagify</h1>
+        <p>
+          Crie etiquetas digitais personalizadas para atletas com nome, país e tipo sanguíneo.
+        </p>
+      </header>
+
+      <section class="content">
+        <form class="card" id="label-form">
+          <h2>Personalize sua etiqueta</h2>
+          <label>
+            Nome do atleta
+            <input type="text" id="athlete-name" placeholder="Seu nome aqui" required />
+          </label>
+          <label>
+            País
+            <select id="country" required>
+              <option value="Brasil">Brasil</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Chile">Chile</option>
+              <option value="Estados Unidos">Estados Unidos</option>
+              <option value="Portugal">Portugal</option>
+            </select>
+          </label>
+          <label>
+            Tipo sanguíneo
+            <select id="blood" required>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </label>
+          <label>
+            Cor de destaque
+            <input type="color" id="accent" value="#e63946" />
+          </label>
+          <button type="submit">Atualizar etiqueta</button>
+          <button type="button" id="download">Baixar PNG</button>
+        </form>
+
+        <div class="preview card">
+          <h2>Pré-visualização</h2>
+          <div class="canvas-wrap">
+            <canvas id="label" width="920" height="280" aria-label="Etiqueta digital"></canvas>
+            <p id="preview-error" class="preview-error" hidden>
+              Não foi possível carregar a prévia. Verifique se o navegador permite o desenho em canvas.
+            </p>
+          </div>
+          <p class="hint">
+            Dica: clique em “Baixar PNG” para salvar seu arquivo pronto para impressão.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Ideia de negócio: venda pacotes premium com múltiplas variações, templates exclusivos
+        e suporte para equipes.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
